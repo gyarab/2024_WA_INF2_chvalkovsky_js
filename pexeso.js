@@ -12,7 +12,6 @@ let config = {
     "image8.jpg"
   ]
 };
-
 let gameState = {
   board: [],
   flippedCards: [],
@@ -20,7 +19,6 @@ let gameState = {
   scores: [0, 0],
   moveCount: 0
 };
-
 function startGame() {
   const app = document.getElementById("app");
   app.innerHTML = `
@@ -59,7 +57,6 @@ function createBoard() {
     gameBoard.appendChild(card);
   }
 }
-
 function shuffle(array) {
   for (let i = array.length - 1; i > 0; i--) {
     let j = Math.floor(Math.random() * (i + 1));
@@ -79,11 +76,10 @@ function flipCard(index) {
   if (!card.classList.contains("flipped")) {
     card.classList.add("flipped");
 
-    // **Add an image element with the image source**
     const img = document.createElement("img");
-    img.src = imageSrc;   // Sets the source of the image
+    img.src = imageSrc; 
     img.alt = "Card Image";
-    card.appendChild(img); // Appends the image element to the card
+    card.appendChild(img);
 
     gameState.flippedCards.push({ index: index, imageSrc: imageSrc });
 
@@ -93,13 +89,12 @@ function flipCard(index) {
   }
 }
 
-// Check if the two flipped cards match
 function checkMatch() {
   const card1 = gameState.flippedCards[0];
   const card2 = gameState.flippedCards[1];
-  const isMatch = card1.imageSrc === card2.imageSrc;  // **Check based on image source**
-
+  const isMatch = card1.imageSrc === card2.imageSrc;
   gameState.moveCount++;
+
   if (isMatch) {
     gameState.scores[gameState.currentPlayer - 1]++;
     setTimeout(function() {
@@ -118,7 +113,7 @@ function checkMatch() {
       cardElement1.classList.remove("flipped");
       cardElement2.classList.remove("flipped");
 
-      cardElement1.innerHTML = "";  // **Remove image when hiding card**
+      cardElement1.innerHTML = "";
       cardElement2.innerHTML = "";
 
       gameState.flippedCards = [];

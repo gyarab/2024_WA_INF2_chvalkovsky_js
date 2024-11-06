@@ -34,11 +34,6 @@ body {
     height: 100%;
     object-fit: cover;
   }
-  
-  .card.flipped {
-    background-color: #50C878;
-  }
-  
   .info {
     margin: 20px 0;
   }
