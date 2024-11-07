@@ -7,17 +7,14 @@ body {
     margin: 0;
     background-color: #eee5e5;
   }
-  
   #app {
     text-align: center;
   }
-  
   .game-board {
     display: grid;
     gap: 30px;
     margin-top: 15px;
   }
-  
   .card {
     width: 90px;
     height: 90px;

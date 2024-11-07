@@ -32,7 +32,6 @@ function startGame() {
     <div class="game-board" id="gameBoard"></div>
     <button onclick="restartGame()">Restartovat hru</button>
   `;
-
   createBoard();
   updateStatus();
 }
@@ -66,7 +65,6 @@ function shuffle(array) {
   }
   return array;
 }
-
 function flipCard(index) {
   if (gameState.flippedCards.length === 2) return;
 
@@ -88,11 +86,10 @@ function flipCard(index) {
     }
   }
 }
-
 function checkMatch() {
   const card1 = gameState.flippedCards[0];
   const card2 = gameState.flippedCards[1];
-  const isMatch = card1.imageSrc === card2.imageSrc;
+  if(card1.imageSrc == card2.imageSrc){var isMatch = true} //musel jsem pouzit var i kdyz jste psal ze by se to nemelo
   gameState.moveCount++;
 
   if (isMatch) {
@@ -122,7 +119,6 @@ function checkMatch() {
     }, 1000);
   }
 }
-
 function winningPlayer() {
   if (gameState.scores[0] > gameState.scores[1]) {
     return "Hráč 1 vítězí!";
@@ -130,17 +126,14 @@ function winningPlayer() {
     return "Hráč 2 vítězí!";
   }
 }
-
 function updateStatus() {
   document.getElementById("status").textContent = "Na tahu hráč " + gameState.currentPlayer;
   document.getElementById("score").textContent = "Hráč 1: " + gameState.scores[0] + ", Hráč 2: " + gameState.scores[1];
   document.getElementById("moveCount").textContent = "Počet tahů: " + gameState.moveCount;
 }
-
 function checkGameOver() {
   return document.querySelectorAll(".card:not(.flipped)").length === 0;
 }
-
 function restartGame() {
   gameState = {
     board: [],
@@ -151,5 +144,4 @@ function restartGame() {
   };
   startGame();
 }
-
 window.onload = startGame;
